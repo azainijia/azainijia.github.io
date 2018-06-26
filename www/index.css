@@ -1,0 +1,67 @@
+body{
+    margin: 0;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+nav{
+    height: 30px;
+    background-color: rgb(227, 228, 229);
+}
+nav section{
+    width: 1200px;
+    height: 30px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(227, 228, 229);    
+}
+
+nav section ul{
+    display: flex;
+    justify-content: space-around;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    line-height: 30px;
+}
+nav section div{
+    line-height: 30px;
+}
+nav div a{
+    display: inline-block;
+    width: 190px;
+    height: 170px;
+    background-image: url(images/sprite.head.png);
+    box-shadow: 0 0 10px #999;
+}
+nav section div p{
+    /* display: inline-block; */
+    float: right;
+    font-size: 12px;
+    margin: 0;
+    /* margin-left: 190px; */
+    color: #999;
+    margin-left: 20px; 
+}
+nav section ul li{
+    color: #999
+}
+nav section ul li:nth-child(1) a:nth-child(1){
+    color: #999;
+}
+nav section ul li:nth-child(1) a:nth-child(2){
+    color: #e22;
+}
+nav section ul li:nth-child(3) a{
+    color: #999;
+}
+.line{
+    width: 1px;
+    height: 12px;
+    background-color: rgb(204, 204, 204);
+    margin: 10px 15px;
+}

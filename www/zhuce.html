@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册</title>
+    <script src="jquery.js"></script>
+    <script src="jquery.cookie.js"></script>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        /* 导航栏 */
+
+        nav {
+            padding: 10px 0;
+            border-bottom: 1px solid #f2f2f2;
+            box-shadow: 0 5px 8px #f2f2f2;
+        }
+
+        nav>div {
+            width: 1200px;
+            margin: 15px auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav>div section:nth-child(1) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav>div section:nth-child(1) h2 {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        nav>div section:nth-child(1) div {
+            width: 160px;
+            height: 50px;
+            background-image: url(images/icon.png);
+        }
+
+        nav>div section:nth-child(2) {
+            margin-top: 30px;
+        }
+
+        nav>div section:nth-child(2) p {
+            display: inline-block;
+            margin: 0;
+            color: #999;
+        }
+
+        nav>div section:nth-child(2) a {
+            text-decoration: none;
+            color: #e22;
+        }
+
+        nav>div section:nth-child(2) a:hover {
+            text-decoration: underline;
+            color: #c81623;
+            ;
+        }
+
+        main {
+            width: 1200px;
+            ;
+            margin: auto;
+        }
+
+        main>section:nth-of-type(1) {
+            width: 450px;
+            margin: 80px auto 0;
+            display: flex;
+        }
+
+        main>section:nth-of-type(1)>div div {
+            width: 24px;
+            height: 24px;
+            margin: auto;
+            border-radius: 50%;
+            border: 1px solid gainsboro;
+            color: gainsboro;
+            font-size: 12px;
+            line-height: 24px;
+        }
+
+        main>section:nth-of-type(1)>div small {
+            display: inline-block;
+            color: gainsboro;
+            margin-top: 10px;
+        }
+
+        main>section:nth-of-type(1)>div:nth-of-type(1) div {
+            background-color: #33bb44;
+            color: white;
+        }
+
+        main>section:nth-of-type(1)>div:nth-of-type(1) small {
+            color: #33bb44;
+        }
+
+        main>section:nth-of-type(1)>div {
+            text-align: center;
+        }
+
+        main>section:nth-of-type(1)>span {
+            display: inline-block;
+            width: 124px;
+            height: 10px;
+            background-image: url(images/reg-icon.png);
+            background-repeat: no-repeat;
+            background-position-y: -100px;
+            margin-top: 8px;
+        }
+
+        /* 注册主内容 */
+
+        main>section:nth-of-type(2) form {
+            width: 450px;
+            margin: 30px auto 0;
+        }
+
+        main>section:nth-of-type(2) form section:nth-of-type(1) {
+            display: flex;
+        }
+
+        main>section:nth-of-type(2) form section:nth-of-type(1)>span {
+            display: inline-block;
+            width: 110px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border: 1px solid gainsboro;
+            font-size: 14px;
+        }
+
+        main>section:nth-of-type(2) form:nth-of-type(1) section:nth-of-type(1) input {
+            border: 1px solid gainsboro;
+            padding-left: 10px;
+            width: 330px;
+            height: 48px;
+            border-left: none;
+        }
+
+        main>section:nth-of-type(2) form:nth-of-type(1)>p:nth-of-type(1) {
+            margin: 0;
+            color: gainsboro;
+            margin-bottom: 20px;
+            height: 12px;
+        }   
+        main>section:nth-of-type(2) form:nth-of-type(1)>p:nth-of-type(1) small{
+            display: none;
+        }
+        main>section:nth-of-type(2) form:nth-of-type(1)>p:nth-of-type(1) small:nth-child(2){
+            color: goldenrod;
+        }
+        main>section:nth-of-type(2) form:nth-of-type(1) section:nth-of-type(2) {
+            overflow: hidden;
+            display: none;
+        }
+
+        main>section:nth-of-type(2) form:nth-of-type(1)>.yanzheng {
+            display: block;
+            width: 450px;
+            height: 50px;
+            text-align: center;
+            background-color: white;
+            line-height: 50px;
+            margin: 0;
+            border: 1px solid gainsboro;
+            font-size: 14px;
+        }
+
+        main>section:nth-of-type(2) form:nth-of-type(1) section:nth-of-type(2)>div {
+            width: 300px;
+            height: 50px;
+            line-height: 50px;
+            padding-left: 25px;
+            border: 1px solid gainsboro;
+            display: inline-block;
+        }
+
+        main>section:nth-of-type(2) form:nth-of-type(1) section:nth-of-type(2)>div input {
+            border: none;
+            margin-left: 30px;
+        }
+
+        main>section:nth-of-type(2) form:nth-of-type(1) section:nth-of-type(2)>button {
+            border: 1px solid gainsboro;
+            color: gray;
+            background-color: gainsboro;
+            float: right;
+            display: inline-block;
+            width: 121px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        main>section:nth-of-type(2) form:nth-of-type(1) section:nth-of-type(2)>p {
+            margin: 0;
+            color: gainsboro;
+            opacity: 0;
+            margin-bottom: 20px;
+        }
+
+        main>section:nth-of-type(2) form>input {
+            width: 100%;
+            height: 50px;
+            margin-top: 50px;
+            border: none;
+            background-color: #e2231a;
+            color: white;
+        }
+        main>section:nth-of-type(2) form:nth-of-type(2){
+            display: none;
+        }
+        main>section:nth-of-type(2) form:nth-of-type(2) section{
+            display: flex;
+            margin-top: 20px; 
+        }
+        main>section:nth-of-type(2) form:nth-of-type(2) section>span {
+            display: inline-block;
+            width: 110px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border: 1px solid gainsboro;
+            font-size: 14px;
+            border-right: none;
+        }
+        main>section:nth-of-type(2) form:nth-of-type(2) section>input{
+            border: 1px solid gainsboro;
+            padding-left: 10px;
+            width: 330px;
+            height: 48px;
+            border-left: none;
+        }
+        main>section:nth-of-type(2) form:nth-of-type(2)>p:nth-of-type(1) {
+            margin: 0;
+            color: gainsboro;
+            margin-bottom: 20px;
+            height: 12px;
+        }   
+        main>section:nth-of-type(2) form:nth-of-type(2)>p:nth-of-type(1) small{
+            display: none;
+        }
+        main>section:nth-of-type(2) form:nth-of-type(2)>p:nth-of-type(1) small:nth-child(2){
+            color: goldenrod;
+        }
+        main>section:nth-of-type(2) form:nth-of-type(2)>p:nth-of-type(2) small{
+            display: none;
+        }
+        main>section:nth-of-type(2) form:nth-of-type(2)>p:nth-of-type(2) small:nth-child(2){
+            color: goldenrod;
+        }
+        main>section:nth-of-type(3) {
+            width: 450px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        main>section:nth-of-type(3) div p {
+            display: inline-block;
+            margin: 0;
+        }
+
+        main>section:nth-of-type(3) div {
+            display: flex;
+            align-items: center;
+        }
+
+        main>section:nth-of-type(3) div:nth-child(1) span {
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            background-image: url(images/reg-icon.png);
+            background-repeat: no-repeat;
+            background-position: 0 -160px;
+            margin-right: 10px;
+        }
+
+        main>section:nth-of-type(3) div:nth-child(2) span {
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            background-image: url(images/reg-icon.png);
+            background-repeat: no-repeat;
+            background-position: -40px -160px;
+            margin-right: 10px;
+        }
+        /* 页脚 */
+        footer{
+            width: 1200px;
+            margin: 100px auto 0;
+            text-align: center;
+        }
+        footer ul {
+            list-style: none;
+            display: flex;
+            width: 800px;
+            margin: 30px auto 0;
+            justify-content: space-between;
+            padding: 0;
+            font-size: 12px;
+            color: gray;
+        }
+        footer ul li{
+            border-right: 1px solid gainsboro;
+            padding-right: 10px;  
+        }
+        footer ul li:nth-last-child(1){
+            border: none;
+        }
+        footer p{
+            font-size: 12px;
+            color: gainsboro;
+        }
+        body>section{
+            width: 500px;
+            margin: 100px auto;
+            text-align: center;
+            display: none;
+        }
+        #ok>div div{
+            width: 70px;
+            margin: auto;
+            height: 70px;
+            background-image: url(images/icon.png);
+            background-position: -100px -50px; 
+        }
+        #ok button{
+            padding: 10px 20px;
+            background-color: #e2231a;
+            border: none;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div>
+            <section>
+                <div></div>
+                <h2>欢迎注册</h2>
+            </section>
+            <section>
+                <p>已有账号？</p>
+                <a href="denglu.html">请登录></a>
+            </section>
+        </div>
+    </nav>
+    <main>
+        <!-- 箭头标识 -->
+        <section>
+            <div>
+                <div>1</div>
+                <small>验证手机号</small>
+            </div>
+            <span class="line_1"></span>
+            <div>
+                <div class="two">2</div>
+                <small>填写账号信息</small>
+            </div>
+            <span class="line_2"></span>
+            <div>
+                <div class="three">3</div>
+                <small>注册成功</small>
+            </div>
+        </section>
+        <section id="form_i">
+            <form action="" class="tels">
+                <section>
+                    <span>中国 0086</span>
+                    <input type="text" name="tel" placeholder="建议使用常用手机号" required id="tel_1">
+                </section>
+                <p class="tishi1">
+                    <small>验证完成后，你可以使用该手机找回密码</small>
+                    <small>格式错误</small>
+                </p>
+                <button class="yanzheng" disabled>点击按钮进行验证</button>
+                <section class="tel_yan">
+                    <div>
+                        手机验证码
+                        <input type="text" name="code" placeholder="输入验证码" required>
+                    </div>
+                    <button id="daoji" disabled>119s后重新获取</button>
+                    <p>
+                        <small>验证码已发送，120秒内输入有效</small>
+                    </p>
+                </section>
+                <input type="submit" value="下一步">
+            </form>
+            <form action="" class="user_1">
+                <section>
+                    <span>用户名</span>
+                    <input type="text" name="user" placeholder="您的账户名和登录名" required>
+                </section>
+                <p class="tishi2">
+                    <small>支持中文、英文、数字、"-"、"_"的组合,4-20个字符</small>
+                    <small>格式错误</small>
+                </p>
+                <section>
+                    <span>设置密码</span>
+                    <input type="password" name="password1" placeholder="建议使用两种或两种以上字符组合" required>
+                </section>
+                <p class="tishi3">
+                    <small>建议使用字母、数字和符号两种以上组合，6-20字符</small>
+                    <small>格式错误</small>
+                </p>
+                <section>
+                    <span>确认密码</span>
+                    <input type="password" name="password2" placeholder="请再次输入密码" required>
+                </section>
+                <input type="submit" value="立即注册">
+            </form>
+        </section>
+        
+        <section>
+            <div>
+                <span></span>
+                <p>企业用户注册</p>
+            </div>
+            <div>
+                <span></span>
+                <p>国际站注册</p>
+            </div>
+        </section>
+    </main>
+    <section id="ok">
+        <div>
+            <div></div>
+            <h1></h1>
+            <p>您已成功注册为京东用户，祝您购物愉快~</p>
+        </div>
+        <button>去购物</button>
+    </section>
+    <footer>
+        <hr>
+        <ul>
+            <li>关于我们</li>
+            <li>联系我们</li>
+            <li>人才招聘</li>
+            <li>商家入驻</li>
+            <li>广告服务</li>
+            <li>手机京东</li>
+            <li>友情链接</li>
+            <li>限售联盟</li>
+            <li>京东社区</li>
+            <li>京东公益</li>
+            <li>English Site</li>
+        </ul>
+        <p>Copyright©2004-2018  京东JD.com 版权所有</p>
+    </footer>
+</body>
+<script>
+    var re = /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/;
+    var re1 = /^[\u4E00-\u9FA5a-zA-Z0-9_-]{4,20}$/
+    var re2 = /^[a-zA-Z0-9_-]{6,20}$/
+    var time = 119;
+    $('[name=tel]').focus(function(){
+        $('.tishi1 small').eq(0).css('display','block')
+    })
+    $('[name=tel]').blur(function(){
+        $('.tishi1 small').eq(0).css('display','none')
+        $('.tishi1 small').eq(1).css('display','none')
+    })
+    $('#tel_1').on('input',function(){
+        if(re.test($('#tel_1').val())){
+            $('.tishi1 small').eq(0).css('display','none');
+            $('.yanzheng').attr('disabled',!re.test(this.value));
+            $('.tishi1 small').eq(1).css('display','none')
+        }else{
+            $('.tishi1 small').eq(0).css('display','none')
+            $('.tishi1 small').eq(1).css('display','block')
+        }
+            var code = getCode();
+            console.log(code)
+            $.ajax({
+            url:'/setcode',
+            data:{
+                tel: $('#tel_1').val(),
+                code : code,
+            },
+            dataType:'json',
+            success:function(data){
+                console.log(data)
+            }
+        })
+        $('.yanzheng').click(function(){
+            $(this).css('display','none');
+            $('.tel_yan').css('display','block')
+            var t = setInterval(function(){
+            --time;
+            $('#daoji').text(time + 's' + '后重新获取');
+            if(time==0){
+                clearInterval(t);
+                $('#daoji').css('background-color','white');
+                $('#daoji').attr('disabled',false)
+                $('#daoji').text('重新获取')
+                time = 119;
+            }
+        },1000)
+        })
+            $('.tels').submit(function(e){
+            // 阻止表单提交
+            e.preventDefault();
+            if($('[name=code]').val().toLowerCase() == code.toLowerCase()){
+                $('.user_1').css('display','block').siblings().css('display','none');
+                $('.line_1').css('background-position-y','-130px');
+                $('.two').css({
+                    'background-color': '#33bb44',
+                    'color': 'white'
+                }).siblings().css('color','#33bb44')
+
+            }else{
+                alert('登录失败')
+            }
+        })
+    })
+    $('[name=user]').focus(function(){
+        $('.tishi2 small').eq(0).css('display','block')
+    })
+    $('[name=user]').blur(function(){
+        $('.tishi2 small').eq(0).css('display','none')
+        $('.tishi2 small').eq(1).css('display','none')
+    })
+    $('[name=user]').on('input',function(){
+        if(re1.test($(this).val())){
+            $('.tishi2 small').eq(0).css('display','none');
+            $('.tishi2 small').eq(1).css('display','none');
+            a = 1
+        }else{
+            $('.tishi2 small').eq(0).css('display','none');
+            $('.tishi2 small').eq(1).css('display','block');
+            a = 0
+        }
+        
+    })
+    $('[name=password1]').focus(function(){
+        $('.tishi3 small').eq(0).css('display','block')
+    })
+    $('[name=password1]').blur(function(){
+        $('.tishi3 small').eq(0).css('display','none')
+        $('.tishi3 small').eq(1).css('display','none')
+    })
+    $('[name=password1]').on('input',function(){
+        if(re2.test($(this).val())){
+            $('.tishi3 small').eq(0).css('display','none');
+            $('.tishi3 small').eq(1).css('display','none');
+        }else{
+            $('.tishi3 small').eq(0).css('display','none');
+            $('.tishi3 small').eq(1).css('display','block');
+        }
+        
+    })
+    $('.user_1').submit(function(e){
+        e.preventDefault();
+        console.log($('[name=password1]').val())
+        if($('[name=password1]').val()!=$('[name=password2]').val() && !re1.test($('[name=user]').val()) && !re2.test($('[name=password1]').val())){
+            $('.user_1 [type=submit]').attr('disabled',true)
+            return
+        }
+        $.post({
+            url:'/reg',
+            data:$(this).serialize(),
+            success:function(data){
+                console.log(data)
+                if(data.num==0){
+                    // location.href = 'denglu.html'
+                    $('#ok>div h1').text('恭喜您' + data.info);
+                    $('main').css('display','none')
+                    $('#ok').css('display','block')
+
+                }
+            }
+        })
+    });
+    $('#ok button').click(function(){
+        location.href = 'index.html'
+    })
+    function getCode(){
+        var str = '1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
+        return str.split('').sort(function(){
+            return Math.random() - 0.5
+        }).slice(0,6).join('');
+    }
+</script>
+</html>

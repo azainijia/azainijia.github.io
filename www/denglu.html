@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录</title>
+    <script src="jquery.js"></script>
+    <script src="jquery.cookie.js"></script>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        /* 导航栏 */
+
+        nav {
+            padding: 10px 0;
+            border-bottom: 1px solid #f2f2f2;
+        }
+
+        nav>div {
+            width: 1200px;
+            margin: 15px auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav>div section:nth-child(1) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav>div section:nth-child(1) h2 {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        nav>div section:nth-child(1) div {
+            width: 160px;
+            height: 50px;
+            background-image: url(images/icon.png);
+        }
+
+        nav>div section:nth-child(2) {
+            margin-top: 30px;
+        }
+
+        nav>div section:nth-child(2) p {
+            display: inline-block;
+            width: 18px;
+            height: 14px;
+            background-image: url(images/q-icon.png);
+            margin: 0;
+        }
+
+        nav>div section:nth-child(2) a {
+            text-decoration: none;
+            color: #e22;
+            font-size: 12px;
+            color: #999;
+        }
+
+        nav>div section:nth-child(2) a:hover {
+            text-decoration: underline;
+            color: #c81623;
+        }
+        body>p{
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            margin: 0;
+            padding: 10px 0;
+            background-color: #fff8f0;
+        }
+        body>p a{
+            color: black;
+            text-decoration: none;
+        }
+        body>p a:hover{
+            text-decoration: underline;
+        }
+        /* 主内容 */
+        main{
+            background-color: #d00015;
+        }
+        main>div{
+            width: 1200px;
+            height: 500px;
+            margin: auto;
+            background-image: url(images/5b2c619bN38145f20.jpg);
+            background-repeat: no-repeat; 
+            background-size: 100% 100%;
+        }
+        main>div section{
+            float: right;
+            background-color: white;
+            text-align: center;
+            width: 350px;
+            margin-top: 20px;
+        }
+        main>div section small{
+            display: block;
+            margin: 20px 0;
+            color: gray;
+        }
+        main>div section small a{
+            text-decoration: none;
+            color: #e22;
+            margin-right: 10px; 
+        }
+        .title{
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+            margin-top: 15px;
+        }
+        .title h1{
+            margin: 0;
+            font-size: 20px;
+        }
+        .title h1:hover{
+            color: #e22;
+        }
+        .title h1:nth-child(1){
+            color: #e22;
+        }
+        .title .line{
+            width: 1px;
+            height: 20px;
+            background-color: gainsboro;
+            margin: 5px 30px;
+        }
+        .erwei{
+            margin: 20px 0;
+            position: relative;
+            padding: 30px;
+        }
+        .erwei div img{
+            position: relative;
+        }
+        .erwei div img:nth-child(2){
+            position: absolute;
+            display: none;
+            float: right;
+            top: 8px;
+            right: 10px;
+        }
+        .erwei form{
+            display: none;
+        }
+        .erwei form div{
+            display: flex;
+            justify-content: center;
+            border: 1px solid black;
+            width: 210px;
+            margin: 10px auto 0;
+        }
+        .erwei form div i{
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+        }
+        .erwei form p{
+            width: 210px;
+            margin: 10px auto;
+            font-size: 12px;
+            text-align: right;
+        }
+        .erwei form [type=submit]{
+            width: 210px;
+            height: 40px;
+            border: none;
+            background-color:#e22;
+            color: white;
+        }
+        .erwei form div:nth-of-type(1) i{
+            background-image: url(images/pwd-icons-new.png);
+        }
+        .erwei form div:nth-of-type(2) i{
+            background-image: url(images/pwd-icons-new.png);
+            background-position: -48px 0;
+        }
+        .erwei form div input{
+            height: 40px;
+            padding: 0;
+            border: none;
+        }
+        .tishi{
+            font-size: 12px; 
+        }
+        main>div section div:nth-of-type(3){
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #999; 
+        }
+        main>div section div:nth-of-type(3) i{
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            margin-left: 15px; 
+        }
+        main>div section div:nth-of-type(3) i:nth-of-type(1){
+            background-image: url(images/qr-coagent.png);
+        }
+        main>div section div:nth-of-type(3) i:nth-of-type(2){
+            background-image: url(images/qr-coagent.png);
+            background-position-x: -27px; 
+        }
+        main>div section div:nth-of-type(3) i:nth-of-type(3){
+            background-image: url(images/qr-coagent.png);
+            background-position-x: 26px; 
+        }
+        main>div section div:nth-of-type(4){
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 8px;
+            /* width: 100%; */
+        }
+        main>div section div:nth-of-type(4) div:nth-child(1) i{
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+        }
+        main>div section div:nth-of-type(4) div:nth-child(1) i:nth-of-type(1){
+            background-image: url(images/QQ-weixin.png);
+            background-repeat: no-repeat; 
+            background-position: 0 2px;
+        }
+        main>div section div:nth-of-type(4) div:nth-child(1) i:nth-of-type(2){
+            background-image: url(images/QQ-weixin.png);
+            background-repeat: no-repeat; 
+            background-position: -19px 2px;
+        }
+        main>div section div:nth-of-type(4) div:nth-child(1){
+            font-size: 12px;
+            display: flex;
+            justify-items: center;
+            justify-content: center;
+        }
+        main>div section div:nth-of-type(4) div:nth-child(1) span{
+            display: inline-block;
+            width: 1px;
+            height: 15px;
+            background-color: black;
+            margin-top: 5px; 
+            margin: 0 10px;
+        }
+        main>div section div:nth-of-type(4) div:nth-child(2){
+            font-size: 12px;
+            color: #e22;
+        }
+        main>div section div:nth-of-type(4) div:nth-child(2) b{
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            font-size: 12px;
+            background-color: #e22;
+            color: white;
+             
+        }
+        main>div section>p{
+            font-size: 12px;
+            background-color: #fff8f0;
+            margin: 0;
+            padding: 10px;
+        }
+        /* 页脚 */
+        footer{
+            width: 1200px;
+            margin: 100px auto 0;
+            text-align: center;
+        }
+        footer ul {
+            list-style: none;
+            display: flex;
+            width: 800px;
+            margin: 30px auto 0;
+            justify-content: space-between;
+            padding: 0;
+            font-size: 12px;
+            color: gray;
+        }
+        footer ul li{
+            border-right: 1px solid gainsboro;
+            padding-right: 10px;  
+        }
+        footer ul li:nth-last-child(1){
+            border: none;
+        }
+        footer p{
+            font-size: 12px;
+            color: gainsboro;
+        }
+        @keyframes move{
+            from{
+                left: 0;
+            }
+            to{
+                left: -60px;
+            }
+        }
+        @keyframes moveto{
+            from{
+                left: -60px;
+            }
+            to{
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div>
+            <section>
+                <div></div>
+                <h2>欢迎登录</h2>
+            </section>
+            <section>
+                <p></p>
+                <a href="#">登录页面，调查问卷</a>
+            </section>
+        </div>
+    </nav>
+    <p>依据《网络安全法》，为保障您的账户安全和正常使用，请尽快完成手机号验证！ 新版<a href="#">《京东隐私政策》</a>已上线，将更有利于保护您的个人隐私。</p>
+    <main>
+        <div>
+            <section>
+                <p>京东不会以任何理由要求您转账汇款，谨防诈骗。</p>
+                <div class="title">
+                    <h1>扫码登录</h1> <span class="line"></span> <h1>账号登录</h1>
+                </div>
+                <div class="erwei">
+                    <div>
+                        <img src="images/show.jpg" alt="">
+                        <img src="images/phone-orange.png" alt="">
+                    </div>
+                    <form action="">
+                        <p class="tishi"></p>
+                        <div>
+                            <i></i>
+                            <input type="text" name="user" required placeholder="邮箱/用户名/手机号">
+                        </div>
+                        <div>
+                            <i></i>
+                            <input type="password" name="password" required placeholder="请输入密码">
+                        </div>
+                        <p>忘记密码</p>
+                        <input type="submit" value="登录">
+                    </form>
+                </div>
+                <small class="sm">打开<a href="#">手机京东</a>扫描二维码 </small>
+                <div class="mian">
+                    <i></i>免输入 <i></i>更快 <i></i>更安全
+                </div>
+                <div>
+                    <div>
+                        <i></i>QQ <span></span> <i></i>微信
+                    </div>
+                    <div>
+                        <b>></b>
+                        立即注册
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <ul>
+            <li>关于我们</li>
+            <li>联系我们</li>
+            <li>人才招聘</li>
+            <li>商家入驻</li>
+            <li>广告服务</li>
+            <li>手机京东</li>
+            <li>友情链接</li>
+            <li>限售联盟</li>
+            <li>京东社区</li>
+            <li>京东公益</li>
+            <li>English Site</li>
+        </ul>
+        <p>Copyright©2004-2018  京东JD.com 版权所有</p>
+    </footer>
+</body>
+<script>
+    $('.erwei div img:nth-child(1)').hover(function(){
+        $('.erwei div img:nth-child(1)').stop().animate({
+            // 'animation': 'move linear 1 0.3s',
+            // 'animation-fill-mode': 'forwards'
+            left : '-60'
+        })
+        $('.erwei div img:nth-child(2)').stop().show()
+    },function(){
+        $('.erwei div img:nth-child(1)').stop().animate({
+            // 'animation': 'moveto linear 1 0.3s',
+            // 'animation-fill-mode': 'forwards'
+            left : '0'
+        })
+        $('.erwei div img:nth-child(2)').stop().hide()
+
+    });
+    $('.title h1:nth-of-type(1)').click(function(){
+        $('.erwei>div').show();
+        $('.erwei form').hide();
+        $('.title h1:nth-of-type(1)').css('color','#e22');
+        $('.title h1:nth-of-type(2)').css('color','black');    
+        $('.mian').show()    
+        $('.sm').show()    
+    })
+    $('.title h1:nth-of-type(2)').click(function(){
+        $('.erwei>div').hide();
+        $('.erwei form').show();
+        $('.title h1:nth-of-type(1)').css('color','black');
+        $('.title h1:nth-of-type(2)').css('color','#e22');    
+        $('.mian').hide()    
+        $('.sm').hide()    
+    })
+    $('.erwei form div:nth-of-type(1) input').focus(function(){
+        $('.erwei form div:nth-of-type(1) i').css('background-position','0 -48px')
+    });
+    $('.erwei form div:nth-of-type(1) input').blur(function(){
+        $('.erwei form div:nth-of-type(1) i').css('background-position','0 0')
+    });
+    $('.erwei form div:nth-of-type(2) input').focus(function(){
+        $('.erwei form div:nth-of-type(2) i').css('background-position','-48px -48px')
+    });
+    $('.erwei form div:nth-of-type(2) input').blur(function(){
+        $('.erwei form div:nth-of-type(2) i').css('background-position','-48px 0')
+    });
+    $('.erwei form').submit(function(e){
+        e.preventDefault();
+        $.post({
+            url:'/login',
+            data:$(this).serialize(),
+            success:function(data){
+                $('.tishi').text(data.info);
+                if(data.code == 0){
+                    location.href = 'index.html'
+                }
+            }
+        })
+    })
+</script>
+</html>
